@@ -25,11 +25,32 @@ class App extends Component {
         this.setState({roster: data})
     })
   }
+  
+  handleChange = e => {
+    let roster = this.state.roster.concat();
+    const { value } = e.target
+    if (value !== "") {
+      roster = roster.filter(item => {
+        const firstName = item.firstName.toLowerCase();
+        const lastName = item.lastName.toLowerCase();
+        const filter = value.toLowerCase();
+  
+        return firstName.includes(filter) || lastName.includes(filter);
+      });
+      this.setState({
+        roster
+      });    
+    } 
+    else {
+      this.getData()
+    }
+  }  
 
     render() {
       return (
         <div className="roster-container">
           <div className="roster-body">
+            <input type="text" id="name" name="name" placeholder="Search by name" onChange={this.handleChange}/>
             {Object.keys(this.state.roster).map(key => (
               <Student
                 key={key}
