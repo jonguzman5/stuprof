@@ -4,18 +4,21 @@ const avg = (arr) => arr.reduce((a, b) => a + b) / arr.length
 
 function Student(props){
   return (
-    <div>
-        <img src={props.roster.pic} alt="" />
-        <p>Email: {props.roster.email}</p>
-        <p>Company: {props.roster.company}</p>
-        <p>Skill: {props.roster.skill}</p>
-        <p>Average: {avg(props.roster.grades)}</p>
-        {/* {props.roster.grades.map((item, i) => {
-            
-            return (
-                <p key={i}>{item}</p>
-            )
-        })}    */}
+    <div className="student-container">
+        <div className="img-container">
+          <img src={props.roster.pic} alt="" />
+        </div>
+        <div className="desc-container">
+          <div className="desc-header">
+            <h1>{props.roster.firstName} {props.roster.lastName}</h1>
+          </div>
+          <div className="desc-body">
+            <p>Email: {props.roster.email}</p>
+            <p>Company: {props.roster.company}</p>
+            <p>Skill: {props.roster.skill}</p>
+            <p>Average: {avg(props.roster.grades)}</p>
+          </div>
+        </div>
     </div>
   );
 }

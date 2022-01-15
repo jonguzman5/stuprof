@@ -1,7 +1,40 @@
-.roster-container {
-  width: 100vw;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+
+body {
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 10px solid purple;
+}
+
+.roster-container {
+  width: 60vw;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   border: 10px solid goldenrod;
+  overflow: scroll;
+}
+
+.student-container {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.img-container img {
+  width: 7em;
+  height: 7em;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin: 0 2em 0 2em;
+}
+
+.desc-container {
+  font-family: 'Raleway', sans-serif;
+}
+
+.desc-body {
+  margin: 0 0 0 1em;
 }
