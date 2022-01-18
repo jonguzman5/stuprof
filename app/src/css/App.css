@@ -30,6 +30,7 @@ body {
 .student-container {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   border-bottom: 1px solid grey;
 }
 
@@ -47,4 +48,24 @@ body {
 
 .student-container .desc-container .desc-body {
   margin: 0 0 0 1em;
+}
+
+.student-container .desc-container .desc-body .dropdown {
+
+}
+
+.dropdownOff {
+  display: none;
+}
+
+.student-container .btn-container {
+  align-self: flex-start;
+  margin-left: auto;
+}
+
+.student-container .btn-container button {
+  border:none;
+  background-color:transparent;
+  font-size: 3em;
+  color: grey;
 }
