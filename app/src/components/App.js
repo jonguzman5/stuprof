@@ -50,7 +50,14 @@ class App extends Component {
       return (
         <div className="roster-container">
           <div className="roster-body">
-            <input type="text" id="name" name="name" placeholder="Search by name" onChange={this.handleChange}/>
+            <input 
+              className="search-input"
+              type="text" 
+              id="name" 
+              name="name" 
+              placeholder="Search by name" 
+              onChange={this.handleChange}
+            />
             {Object.keys(this.state.roster).map(key => (
               <Student
                 key={key}

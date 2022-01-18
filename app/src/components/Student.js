@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Tagger from './Tagger';
 
 const avg = (arr) => arr.reduce((a, b) => a + b) / arr.length
 
@@ -7,7 +8,8 @@ class Student extends Component {
     super(props)
     this.state = {
       toggleDropdown: false,
-      isClicked: false
+      isClicked: false,
+      tags: []
     }
   }
 
@@ -21,15 +23,23 @@ class Student extends Component {
     )
   }
 
+  handleSubmit = newTag => {
+    const {tags} = this.state
+    this.setState({
+      tags: tags.concat(newTag)
+    })
+  }
+
+
   render(){
-    const { toggleDropdown, isClicked } = this.state;
+    const { toggleDropdown, isClicked, tags } = this.state;
     const { pic, firstName, lastName, email, company, skill, grades } = this.props.roster;
     const dropdownTF = toggleDropdown ? 'dropdownOn' : 'dropdownOff';
     const isClickedTF = isClicked ? '-': '+';
     return (
       <div className="student-container">
           <div className="img-container">
-            <img src={pic} alt="" />
+            <img src={pic} alt=""/>
           </div>
           <div className="desc-container">
             <div className="desc-header">
@@ -40,6 +50,16 @@ class Student extends Component {
               <p>Company: {company}</p>
               <p>Skill: {skill}</p>
               <p>Average: {avg(grades)}</p>
+              <div className="tag-container">
+                {tags.map((item, i) => {
+                  return (
+                    <p key={i}>{item.tag}</p>
+                  )
+                })}                
+              </div>                  
+              <Tagger
+                handleSubmit={this.handleSubmit}
+              />
               <div
                 className={`dropdown ${dropdownTF}`}
               >
@@ -48,7 +68,7 @@ class Student extends Component {
                     <p key={i}>Test {i + 1}: {item}</p>
                   )
                 })}       
-              </div>              
+              </div>    
             </div>
           </div>
           <div className="btn-container">

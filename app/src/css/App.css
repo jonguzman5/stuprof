@@ -19,12 +19,19 @@ body {
 }
 
 .roster-container input {
-  width: 60vw;
-  height: 6vh;
   font-family: 'Raleway', sans-serif;
-  font-size: 1em;
   border: none;
   border-bottom: 1px solid grey;
+}
+
+.roster-container input:focus {
+  outline: none;
+}
+
+.roster-container .search-input {
+  width: 60vw;
+  height: 6vh;
+  font-size: 1em;
 }
 
 .student-container {
@@ -43,19 +50,32 @@ body {
 }
 
 .student-container .desc-container {
+  width: 60vw;
   font-family: 'Raleway', sans-serif;
+  overflow: scroll;
 }
 
 .student-container .desc-container .desc-body {
   margin: 0 0 0 1em;
 }
 
-.student-container .desc-container .desc-body .dropdown {
-
-}
-
 .dropdownOff {
   display: none;
+}
+
+.student-container .desc-container .desc-body .tag-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.student-container .desc-container .desc-body .tag-container p {
+  width: 4em;
+  height: 2em;
+  background: lightgray;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0 0 0;
+  overflow: scroll;
 }
 
 .student-container .btn-container {
@@ -68,4 +88,8 @@ body {
   background-color:transparent;
   font-size: 3em;
   color: grey;
+}
+
+.submit-btn {
+  display: none;
 }
