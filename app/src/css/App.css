@@ -5,7 +5,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 10px solid purple;
+  background: lightgray;
+  /* border: 10px solid purple; */
 }
 
 .roster-container {
@@ -13,8 +14,9 @@ body {
   height: 60vh;
   display: flex;
   flex-direction: column;
-  border: 10px solid goldenrod;
-  /* border-radius: 10px; */
+  /* border: 10px solid goldenrod; */
+  background: white;
+  border-radius: 10px;
   overflow: scroll;
 }
 

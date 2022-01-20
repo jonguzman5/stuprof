@@ -22,10 +22,12 @@ class Student extends Component {
   }
 
   handleSubmit = newTag => {
-    const {tags} = this.state
+    const {setTags} = this.props;
+    const {tags} = this.state;
     this.setState({
       tags: tags.concat(newTag)
     })
+    setTags(tags);
   }
 
   getAvg = (arr) => {
@@ -47,10 +49,6 @@ class Student extends Component {
     const { pic, firstName, lastName, email, company, skill, grades } = this.props.roster;
     const dropdownTF = toggleDropdown ? 'dropdownOn' : 'dropdownOff';
     const isClickedTF = isClicked ? '-': '+';
-
-
-    this.getAvg(grades)
-
     return (
       <div className="student-container">
           <div className="img-container">

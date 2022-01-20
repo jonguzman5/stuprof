@@ -9,7 +9,8 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      roster: []
+      roster: [],
+      tags: []
     }
   }
 
@@ -21,12 +22,18 @@ class App extends Component {
     axios.get(`https://api.hatchways.io/assessment/students`)
       .then(res => {
         const data = res.data.students
-
         this.setState({roster: data})
     })
   }
+
+  setTags = (tags) => {
+    console.log(tags)
+    this.setState({
+      tags
+    })
+  }
   
-  handleChange = e => {
+  searchName = e => {
     let roster = this.state.roster.concat();
     const { value } = e.target
     if (value !== "") {
@@ -46,23 +53,53 @@ class App extends Component {
     }
   }  
 
+  searchTag = e => {
+    this.setTags();
+    let tags = this.state.tags.concat();
+    console.log(tags);
+    const { value } = e.target
+    if (value !== "") {
+      tags = tags.filter(item => {
+        const tagName = item.tag
+        const filter = value
+  
+        return tagName.includes(filter);
+      });
+      this.setState({
+        tags 
+      });    
+    } 
+    // else {
+    //   this.setTags()
+    // }
+  }  
+
     render() {
       return (
         <div className="roster-container">
-          <div className="roster-body">
+          <div className="roster-body">        
             <input 
               className="search-input"
               type="text" 
               id="name" 
               name="name" 
               placeholder="Search by name" 
-              onChange={this.handleChange}
+              onChange={this.searchName}
             />
+            {/* <input 
+              className="search-input"
+              type="text" 
+              id="name" 
+              name="name" 
+              placeholder="Search by tag" 
+              onChange={this.searchTag}
+            /> */}
             {Object.keys(this.state.roster).map(key => (
               <Student
                 key={key}
                 index={key}
                 roster={this.state.roster[key]}
+                setTags={this.setTags}
               />
             ))}
           </div>          
