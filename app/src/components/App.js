@@ -21,7 +21,7 @@ class App extends Component {
     axios.get(`https://api.hatchways.io/assessment/students`)
       .then(res => {
         const data = res.data.students
-        //console.log(data[0].grades)
+
         this.setState({roster: data})
     })
   }

@@ -12,6 +12,7 @@ class Tagger extends Component {
         if(event.keyCode === 13){
             event.preventDefault();
             this.onSubmit();
+            this.setState({tag: ""})
         }
     }
 

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import Tagger from './Tagger';
 
-const avg = (arr) => arr.reduce((a, b) => a + b) / arr.length
-
 class Student extends Component {
   constructor(props) {
     super(props)
@@ -30,12 +28,29 @@ class Student extends Component {
     })
   }
 
+  getAvg = (arr) => {
+    let avgArr = []
+    {arr.map((item, i) => {
+      avgArr.push(item)
+    })}
+
+    let total = 0;
+    for(let i = 0; i < avgArr.length; i++) {
+        total += parseInt(avgArr[i]);
+    }
+    let avg = total / avgArr.length;
+    return avg;
+  }
 
   render(){
     const { toggleDropdown, isClicked, tags } = this.state;
     const { pic, firstName, lastName, email, company, skill, grades } = this.props.roster;
     const dropdownTF = toggleDropdown ? 'dropdownOn' : 'dropdownOff';
     const isClickedTF = isClicked ? '-': '+';
+
+
+    this.getAvg(grades)
+
     return (
       <div className="student-container">
           <div className="img-container">
@@ -49,7 +64,7 @@ class Student extends Component {
               <p>Email: {email}</p>
               <p>Company: {company}</p>
               <p>Skill: {skill}</p>
-              <p>Average: {avg(grades)}</p>
+              <p>Average: {this.getAvg(grades)}%</p>
               <div className="tag-container">
                 {tags.map((item, i) => {
                   return (
